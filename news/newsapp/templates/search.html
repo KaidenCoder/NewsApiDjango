@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    {% if notfound %}
+        {{ notfound }}
+    {% else %}
+        {% if search_topic.Response %}
+           Sorry, {{ quote }} is not valid. Please try again.... 
+        {% endif %}
+        <div class="container">
+            <div class="row">
+        {% for x in search_topic.articles %}
+
+        <div class="col-sm">
+            <div class="card" style="width: 18rem;">
+                <img src="{{ x.urlToImage }}" class="card-img-top" alt="{{ x.source.name }}"  width="200" height="200">
+                <div class="card-body">
+                  <h5 class="card-title">{{ x.title }}</h5>
+                  <p class="card-text">{{ x.author }}</p>
+                  <a href="{{ x.url }}" class="btn btn-primary" target="_blank">Read more..</a>
+                </div>
+              </div>
+              <br>
+        </div>
+          
+        {% endfor %}
+    </div></div>
+
+    {% endif %}
+
+{% endblock %}

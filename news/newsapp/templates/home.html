@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">NEWS</h1>
+      <p class="lead">Get breaking news headlines, and search for articles from over 30,000 news sources and blogs</p>
+    </div>
+  </div>
+
+
+<div class="container">
+    <div class="row">
+        {% for x in api.articles %}
+        <div class="col-sm">
+            <div class="card" style="width: 18rem;">
+                <img src="{{ x.urlToImage }}" class="card-img-top" alt="{{ x.source.name }}"  width="200" height="200">
+                <div class="card-body">
+                  <h5 class="card-title">{{ x.title }}</h5>
+                  <p class="card-text">{{ x.author }}</p>
+                  <a href="{{ x.url }}" class="btn btn-primary" target="_blank">Read more..</a>
+                </div>
+              </div>
+              <br>
+        </div>
+          
+        {% endfor %}
+    </div>
+</div>
+
+
+
+
+
+{% endblock %}
